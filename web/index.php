@@ -31,7 +31,7 @@ $app->register(new Csanquer\Silex\PdoServiceProvider\Provider\PDOServiceProvider
 
 $app->get('/', function() use($app) {
   $app['monolog']->addDebug('logging output.');
-  return 'Hello World!';
+  return 'Hello World!MAO';
 });
 
 $app->get('/cowsay', function() use($app) {
