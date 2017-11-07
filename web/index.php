@@ -31,12 +31,17 @@ $app->register(new Csanquer\Silex\PdoServiceProvider\Provider\PDOServiceProvider
 
 $app->get('/', function() use($app) {
   $app['monolog']->addDebug('logging output.');
-  return 'Hello World!MAO';
+  return 'CIAO CLASSE!';
 });
 
 $app->get('/cowsay', function() use($app) {
   $app['monolog']->addDebug('cowsay');
   return "<pre>".\Cowsayphp\Cow::say("Cool beans")."</pre>";
+});
+
+$app->get('/polenta', function() use($app) {
+  $app['monolog']->addDebug('Polenta');
+  return 'La polenta a colaziù!';
 });
 
 $app->get('/db/', function() use($app) {
