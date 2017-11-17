@@ -15,7 +15,7 @@ if (!$result) {
         <title>Count Page Access</title> 
     </head> 
     <body> 
-        <?if ($visitCount == 1): ?>
+        <?if ($_COOKIE['$name']== 1): ?>
             Welcome! This is the first time you have viewed this page. 
         <?else:?> 
             You have viewed this page <?= $_COOKIE['$name'] ?> times. 
