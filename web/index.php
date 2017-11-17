@@ -1,16 +1,16 @@
 <?php
-    setcookie('contatore', isset($_COOKIE['contatore']) ? $_COOKIE['contatore']++ : 1, time() + (86400*7), "/");
-    $ContaVisite = $_COOKIE['contatore'];
+    setcookie('count', isset($_COOKIE['count']) ? $_COOKIE['count']++ : 1);
+    $visitCount = $_COOKIE['count'];
 ?>
 <html> 
     <head> 
-        <title>Contatore accessi</title> 
+        <title>Count Page Access</title> 
     </head> 
     <body> 
-        <?if ($ContaVisite == 1): ?>
-            Benvenuto! E' la prima volta che visiti questa pagina!. 
+        <?if ($visitCount == 1): ?>
+            Welcome! This is the first time you have viewed this page. 
         <?else:?> 
-            Hai già visitato questa pagina <?= $_COOKIE['contatore'] ?> volte. 
+            You have viewed this page <?= $_COOKIE['count'] ?> times. 
         <?endif;?>
     </body> 
 </html>
