@@ -79,12 +79,6 @@ if( isset( $_SESSION['visit_count'] ) )
 	<title>Simple PHP Session Visitor hit Counter Demo Page</title>
 </head>
 <body>
-	<h3 class="title"> Simple PHP Session Visitor hit Counter Demo Page </h3>
-	<p class="visitor-container"> Page has been Visited <?php include('visitor_counter.txt'); ?> Times </p> 
-
-	<p>If you visit this page after 5 minuet (adjustable) or from different web browser,<br> you will be counted  as new visitor</p>
-	
-	<p>Download this simple php visitor hit counter from gitHun <br>@ 
-	<a href="https://github.com/shariarbd/Simple-PHP-Session-Visitor-hit-Counter">Simple PHP Session Visitor hit Counter</a></p>
+	ciao
 </body>
 </html>
