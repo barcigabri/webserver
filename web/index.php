@@ -2,7 +2,7 @@
 
 $counter_logfile = 'visitor_counter.txt';  // will used to store count! This file should contain beside this script file. 
 // 5 minit in seconds
-$inactive = 300;  // how many second? Set the session max lifetime ? 1m = 60s 
+$inactive = 10;  // how many second? Set the session max lifetime ? 1m = 60s 
 ini_set('session.gc_maxlifetime', $inactive); // set the session max lifetime 
 
 session_start();
