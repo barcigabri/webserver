@@ -89,7 +89,7 @@
 			echo " <td>Cosa stai cercando?: </td><td><input type='text' value='$que' name='que' id='que' /></td><br/>";
 			echo "</tr>";
 			echo "</table>";
-			echo " <input type='submit' value='Aggiorna tabella' />";
+			echo " <input type='submit' value='Aggiorna tabella' style='background: #ff0000;background-image: -webkit-linear-gradient(top, #ff0000, #32b82b);background-image: -moz-linear-gradient(top, #ff0000, #32b82b);background-image: -ms-linear-gradient(top, #ff0000, #32b82b);background-image: -o-linear-gradient(top, #ff0000, #32b82b);background-image: linear-gradient(to bottom, #ff0000, #32b82b);-webkit-border-radius: 28;-moz-border-radius: 28;border-radius: 28px;font-family: Arial;color: #ffffff;font-size: 20px;padding: 10px 20px 10px 20px;text-decoration: none; />";
 			echo "</form>";
 		?>
 	</body>
