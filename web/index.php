@@ -12,10 +12,6 @@
 						esito=true;
 				return esito;
 			}
-			function sub()
-			{
-				document.getElementById("forma").submit();
-			}
 		</script>
 	</head>
 	<body>
@@ -93,7 +89,7 @@
 			echo " <td>Cosa stai cercando?: </td><td><input type='text' value='$que' name='que' id='que' /></td><br/>";
 			echo "</tr>";
 			echo "</table>";
-			echo " <input type='button' onclick='sub();'/>";
+			echo " <input type='submit' value='Aggiorna tabella' />";
 			echo "</form>";
 		?>
 	</body>
