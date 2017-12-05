@@ -77,7 +77,7 @@
 			echo curl_error($ch);
 			curl_close($ch);
 		?>
-		<form id="forma" method="post" onsubmit="return controllo_campi();>
+		<form id="forma" method="post" onsubmit="return controllo_campi();">
 			Numero elementi (1-50)<input type="text" value="10" name="lim" id="lim" />
 			Citta' <input type="text" value="Bergamo" name="cit" id="cit" />
 			Cosa stai cercando? <input type="text" value="pizzeria" name="que" id="que" />
