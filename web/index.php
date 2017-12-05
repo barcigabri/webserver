@@ -80,10 +80,10 @@
 			echo "<form id='forma' method='post' onsubmit='return controllo_campi();'><br/>";
 			echo "<table>";
 			echo "<tr>";
-			echo " <td>;Numero elementi (1-50): </td><td><input type='text' value='$lim' name='lim'id='lim' /></td><br/><hr>";
+			echo " <td>Numero elementi (1-50): </td><td><input type='text' value='$lim' name='lim'id='lim' /></td>";
 			echo "</tr>";
 			echo "<tr>";
-			echo " <td>Citta: </td><td><input type='text' value='$cit' name='cit' id='cit' /></td><br/><hr>";
+			echo " <td>Citta: </td><td><input type='text' value='$cit' name='cit' id='cit' /></td>";
 			echo "</tr>";
 			echo "<tr>";
 			echo " <td>Cosa stai cercando?: </td><td><input type='text' value='$que' name='que' id='que' /></td><br/>";
