@@ -4,7 +4,7 @@
 # e poi la immagazzina in una variabile
 
 # Indirizzo della pagina da richiamare
-$indirizzo_pagina="www.giacobbe85.altervista.org";
+$indirizzo_pagina="www.google.it";
 
 # Codice di utilizzo di cURL. 
 # Chiama la pagina e la immagazzina in $data
