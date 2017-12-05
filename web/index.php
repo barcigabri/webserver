@@ -4,7 +4,7 @@
 # e poi la immagazzina in una variabile
 
 # Indirizzo della pagina da richiamare
-$indirizzo_pagina="https://api.foursquare.com/v2/venues/search?client_id=YVMN1NGHAW4DWINOY2BHBVQTGR0RG01D4EVZ3Z3TPRN5EBE2&client_secret=GYRAVQCTVV5DUYI3J3OH2GKLQN5S2LEA0QIGECJ1MUFBTX2X&near=Bergamo, IT&v=20170801";
+$indirizzo_pagina="https://api.foursquare.com/v2/venues/search?v=20161016&query=pizzeria&near=Bergamo,IT&intent=checkin&client_id=YVMN1NGHAW4DWINOY2BHBVQTGR0RG01D4EVZ3Z3TPRN5EBE2&client_secret=GYRAVQCTVV5DUYI3J3OH2GKLQN5S2LEA0QIGECJ1MUFBTX2X";
 
 # Codice di utilizzo di cURL. 
 # Chiama la pagina e la immagazzina in $data
