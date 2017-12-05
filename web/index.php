@@ -11,11 +11,11 @@ $indirizzo_pagina="https://api.foursquare.com/v2/venues/search?v=20161016&query=
 $ch = curl_init() or die(curl_error());
 curl_setopt($ch, CURLOPT_URL,$indirizzo_pagina);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-$data=curl_exec($ch) or die(curl_error());
+$json=curl_exec($ch) or die(curl_error());
 #decodifico
-//$data = json_decode($json);
+$data = json_decode($json);
 # Stampa della variabile $data. 
-echo $data;
+echo $data->response->venues[0]->name;
 
 # Stampa di eventuali errori
 echo curl_error($ch);
