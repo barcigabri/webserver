@@ -76,12 +76,13 @@
 			# Stampa di eventuali errori
 			echo curl_error($ch);
 			curl_close($ch);
+		
+			echo "<form id='forma' method='post' onsubmit='return controllo_campi();'>";
+			echo "	Numero elementi (1-50)<input type='text' value='$lim' name='lim'id='lim'/>";
+			echo "	Citta <input type='text' value='$cit' name='cit' id='cit' />";
+			echo "	Cosa stai cercando? <input type='text' value='$que' name='que' id='que' />";
+			echo "	<input type='ubmit' value='Aggiorna tabella' />";
+			echo "</form>";
 		?>
-		<form id="forma" method="post" onsubmit="return controllo_campi();">
-			Numero elementi (1-50)<input type="text" value="10" name="lim" id="lim" />
-			Citta' <input type="text" value="Bergamo" name="cit" id="cit" />
-			Cosa stai cercando? <input type="text" value="pizzeria" name="que" id="que" />
-			<input type="submit" value="Aggiorna tabella" />
-		</form>
 	</body>
 </html>
