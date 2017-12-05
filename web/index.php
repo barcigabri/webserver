@@ -76,12 +76,20 @@
 			# Stampa di eventuali errori
 			echo curl_error($ch);
 			curl_close($ch);
-		
+			
 			echo "<form id='forma' method='post' onsubmit='return controllo_campi();'><br/>";
-			echo "	Numero elementi (1-50): <input type='text' value='$lim' name='lim'id='lim'/><br/>";
-			echo "	Citta: <input type='text' value='$cit' name='cit' id='cit' /><br/>";
-			echo "	Cosa stai cercando?: <input type='text' value='$que' name='que' id='que' />";
-			echo "	<input type='submit' value='Aggiorna tabella' />";
+			echo "<table>";
+			echo "<tr>";
+			echo " <td>;Numero elementi (1-50): </td><td><input type='text' value='$lim' name='lim'id='lim' /></td><br/><hr>";
+			echo "</tr>";
+			echo "<tr>";
+			echo " <td>Citta: </td><td><input type='text' value='$cit' name='cit' id='cit' /></td><br/><hr>";
+			echo "</tr>";
+			echo "<tr>";
+			echo " <td>Cosa stai cercando?: </td><td><input type='text' value='$que' name='que' id='que' /></td><br/>";
+			echo "</tr>";
+			echo "</table>";
+			echo " <input type='submit' value='Aggiorna tabella' />";
 			echo "</form>";
 		?>
 	</body>
