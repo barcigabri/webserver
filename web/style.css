@@ -142,7 +142,7 @@ td.text-right {
   text-align: right;
 }
 
-submit {
+.btn {
   background: #ff0000;
   background-image: -webkit-linear-gradient(top, #ff0000, #32b82b);
   background-image: -moz-linear-gradient(top, #ff0000, #32b82b);
@@ -159,7 +159,7 @@ submit {
   text-decoration: none;
 }
 
-submit:hover {
+.btn:hover {
   background: #3cb0fd;
   background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
   background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
