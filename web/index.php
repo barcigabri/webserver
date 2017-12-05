@@ -81,7 +81,7 @@
 			echo "	Numero elementi (1-50)<input type='text' value='$lim' name='lim'id='lim'/>";
 			echo "	Citta <input type='text' value='$cit' name='cit' id='cit' />";
 			echo "	Cosa stai cercando? <input type='text' value='$que' name='que' id='que' />";
-			echo "	<input type='ubmit' value='Aggiorna tabella' />";
+			echo "	<input type='submit' value='Aggiorna tabella' />";
 			echo "</form>";
 		?>
 	</body>
