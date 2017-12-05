@@ -52,7 +52,7 @@
 			# Decodifico la stringa json e la salvo nella variabile $data
 			$data = json_decode($json);
 			# Stampa della tabella delle pizzerie.
-			echo "<table>";
+			echo "<table align="center">";
 				echo "<tr>";
 					echo "<th>NOME</th>";
 					echo "<th>LATITUDINE</th>";
