@@ -5,7 +5,8 @@
     "twig/twig": "^2.0",
     "symfony/twig-bridge": "^3",
     "alrik11es/cowsayphp": "^1.2",
-    "csanquer/pdo-service-provider": "~1.1dev"
+    "csanquer/pdo-service-provider": "~1.1dev",
+    "ext-pecl_http": "*"
   },
   "require-dev": {
     "heroku/heroku-buildpack-php": "*"
