@@ -141,3 +141,30 @@ td.text-center {
 td.text-right {
   text-align: right;
 }
+
+submit {
+  background: #ff0000;
+  background-image: -webkit-linear-gradient(top, #ff0000, #32b82b);
+  background-image: -moz-linear-gradient(top, #ff0000, #32b82b);
+  background-image: -ms-linear-gradient(top, #ff0000, #32b82b);
+  background-image: -o-linear-gradient(top, #ff0000, #32b82b);
+  background-image: linear-gradient(to bottom, #ff0000, #32b82b);
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+submit:hover {
+  background: #3cb0fd;
+  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+  text-decoration: none;
+}
