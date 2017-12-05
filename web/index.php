@@ -8,7 +8,7 @@
 				var esito=false;
 				var verifica=/^\d{1,2}$/
 				if(document.getElementById("lim").value!=""&&document.getElementById("cit").value!=""&&document.getElementById("que").value!="")
-					if(valore.match(verifica))
+					if(valore.match(verifica)&&parseInt(valore)<51)
 						esito=true;
 				return esito;
 			}
