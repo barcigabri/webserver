@@ -8,8 +8,13 @@
 				var esito=false;
 				var verifica=/^\d{1,2}$/
 				if(document.getElementById("lim").value!=""&&document.getElementById("cit").value!=""&&document.getElementById("que").value!="")
+				{
+					for($i=0;$i<strlen($document.getElementById("cit").value);$i++)
+						if($document.getElementById("cit").value[$i]==" ")
+							$document.getElementById("cit").value[$i]="+";
 					if(valore.match(verifica)&&parseInt(valore)<51)
 						esito=true;
+				}
 				return esito;
 			}
 		</script>
@@ -40,7 +45,7 @@
 			{
 				$que="pizzeria";
 			}
-			# Questo script chiama un'API e la inserisce in una tabella 
+			# Questo script chiama un'API e la inserisce in una tabella
 			# Indirizzo dell'API da richiedere
 			$indirizzo_pagina="https://api.foursquare.com/v2/venues/search?v=20161016&query=$que&limit=$lim&intent=checkin&client_id=YVMN1NGHAW4DWINOY2BHBVQTGR0RG01D4EVZ3Z3TPRN5EBE2&client_secret=GYRAVQCTVV5DUYI3J3OH2GKLQN5S2LEA0QIGECJ1MUFBTX2X&near=$cit";
 			# Codice di utilizzo di cURL
@@ -59,7 +64,7 @@
 					echo "<th>LONGITUDINE</th>";
 				echo "</tr>";
 				for($i=0; $i<$lim; $i++)
-				{	
+				{
 					echo "<tr>";
 						echo "<td>";
 						echo $data->response->venues[$i]->name;
@@ -76,7 +81,7 @@
 			# Stampa di eventuali errori
 			echo curl_error($ch);
 			curl_close($ch);
-			
+
 			echo "<form id='forma' method='post' onsubmit='return controllo_campi();'><br/>";
 			echo "<table>";
 			echo "<tr>";
