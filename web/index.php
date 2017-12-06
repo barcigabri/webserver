@@ -9,11 +9,16 @@
 		</script>
 	</head>
 	<body>
-		<a href="http://gabrielebarcella.herokuapp.com/pizzerie/">CERCA PIZZERIE API</a>
-		<br/>
-		<a href="http://gabrielebarcella.herokuapp.com/crudphp/">GESTIONE UTENTI PHP</a>
-		<br/>
-		<a href="http://gabrielebarcella.herokuapp.com/divisori/">TABELLA DEI DIVISORI</a>
-		<br/>
+		<table>
+			<tr>
+				<a href="http://gabrielebarcella.herokuapp.com/pizzerie/">CERCA PIZZERIE API</a>
+			</tr>
+			<tr>
+				<a href="http://gabrielebarcella.herokuapp.com/crudphp/">GESTIONE UTENTI PHP</a>
+			</tr>
+			<tr>
+				<a href="http://gabrielebarcella.herokuapp.com/divisori/">TABELLA DEI DIVISORI</a>
+			</tr>
+		</table>
 	</body>
 </html>
