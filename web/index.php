@@ -1,5 +1,6 @@
 <html>
 	<head>
+		<title>Ricerca</title>
 		<link rel="stylesheet" type="text/css" href="style.css">
 		<script>
 			function controllo_campi()
