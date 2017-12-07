@@ -94,6 +94,4 @@
 		?>
 	</body>
 </html>
-//
-
 Credit to Gabriele Barcella
