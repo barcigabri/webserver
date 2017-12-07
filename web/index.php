@@ -1,258 +1,97 @@
-<script>
-
-	function passa_a(valore)
-	{
-		document.getElementById("stato").value=valore;
-		document.getElementById("forma").submit();
-	}
-	function concatena()
-	{
-		
-		var txt;
-		if(document.getElementById("adm").checked)
-		    txt=document.getElementById("user").value+";"+document.getElementById("pass").value+";A"+'\n';
-		else
-			txt=document.getElementById("user").value+";"+document.getElementById("pass").value+";U"+'\n';
-		document.getElementById("testo").value=txt;
-		//alert(document.getElementById("testo").value);
-		document.getElementById("stato").value=4;
-		document.getElementById("forma").submit();
-		//alert("stop");
-	}
-
-	function passa_aa(valore)
-	{
-		
-		document.getElementById("app").value=document.getElementById("eli").value;
-		if(document.getElementById("app").value<0||document.getElementById("app").value>document.getElementById("num").value)
-		{
-			alert("inserire un valore valido!");
-			valore--;
-		}
-		//alert(document.getElementById("app").value)
-		document.getElementById("stato").value=valore;
-		document.getElementById("forma").submit();
-	}
-	function logout()
-	{
-		<?
-			echo "window.open('http://127.0.0.1:4001/web/LOGIN_PHP','_self');";
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<script>
+			function controllo_campi()
+			{
+				var valore=document.getElementById("lim").value;
+				var esito=false;
+				var verifica=/^\d{1,2}$/
+				if(document.getElementById("lim").value!=""&&document.getElementById("cit").value!=""&&document.getElementById("que").value!="")
+					if(valore.match(verifica)&&parseInt(valore)<51)
+						esito=true;
+				return esito;
+			}
+		</script>
+	</head>
+	<body>
+		<?php
+			if(isset($_POST["lim"]))
+			{
+				$lim=$_POST["lim"];
+			}
+			else
+			{
+				$lim=10;
+			}
+			if(isset($_POST["cit"]))
+			{
+				$cit=$_POST["cit"];
+			}
+			else
+			{
+				$cit="bergamo";
+			}
+			if(isset($_POST["que"]))
+			{
+				$que=$_POST["que"];
+			}
+			else
+			{
+				$que="pizzeria";
+			}
+			# Questo script chiama un'API e la inserisce in una tabella 
+			# Indirizzo dell'API da richiedere
+			$indirizzo_pagina="https://api.foursquare.com/v2/venues/search?v=20161016&query=$que&limit=$lim&intent=checkin&client_id=YVMN1NGHAW4DWINOY2BHBVQTGR0RG01D4EVZ3Z3TPRN5EBE2&client_secret=GYRAVQCTVV5DUYI3J3OH2GKLQN5S2LEA0QIGECJ1MUFBTX2X&near=$cit";
+			# Codice di utilizzo di cURL
+			# Chiama l'API e la immagazzina in $json
+			$ch = curl_init() or die(curl_error());
+			curl_setopt($ch, CURLOPT_URL,$indirizzo_pagina);
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+			$json=curl_exec($ch) or die(curl_error());
+			# Decodifico la stringa json e la salvo nella variabile $data
+			$data = json_decode($json);
+			# Stampa della tabella delle pizzerie.
+			echo "<table>";
+				echo "<tr>";
+					echo "<th>NOME</th>";
+					echo "<th>LATITUDINE</th>";
+					echo "<th>LONGITUDINE</th>";
+				echo "</tr>";
+				for($i=0; $i<$lim; $i++)
+				{	
+					echo "<tr>";
+						echo "<td>";
+						echo $data->response->venues[$i]->name;
+						echo "</td>";
+						echo "<td>";
+						echo $data->response->venues[$i]->location->lat;
+						echo "</td>";
+						echo "<td>";
+						echo $data->response->venues[$i]->location->lng;
+						echo "</td>";
+					echo "</tr>";
+				}
+			echo "</table>";
+			# Stampa di eventuali errori
+			echo curl_error($ch);
+			curl_close($ch);
+			
+			echo "<form id='forma' method='post' onsubmit='return controllo_campi();'><br/>";
+			echo "<table>";
+			echo "<tr>";
+			echo " <td>Numero elementi (1-50): </td><td><input type='text' value='$lim' name='lim'id='lim' /></td>";
+			echo "</tr>";
+			echo "<tr>";
+			echo " <td>Citta: </td><td><input type='text' value='$cit' name='cit' id='cit' /></td>";
+			echo "</tr>";
+			echo "<tr>";
+			echo " <td>Cosa stai cercando?: </td><td><input type='text' value='$que' name='que' id='que' /></td><br/>";
+			echo "</tr>";
+			echo "</table>";
+			echo " <input type='submit' value='Aggiorna tabella' class='btn'/>";
+			echo "</form>";
 		?>
-	}
-</script>
-
-<head>
-	<title>GESTIONE</title>
-</head>
-
-<?
-	
-		
-		if(isset($_POST["stato"])&&!empty($_POST["stato"]))
-		{
-			$stato=$_POST["stato"];
-		}
-		else
-		{
-			$stato=0;
-			
-		}
-		echo("<form name='forma' id='forma' method='post'>");
-		echo("<input type='hidden' name='stato' id='stato'>");
-		switch($stato)
-		{
-			
-			case 0:
-					echo("MENU PRINCIPALE<br/>");
-					echo("<input type='button' value='Elenco utenti' onclick='passa_a(1);'><br/>");
-					echo("<input type='button' value='Modifica utenti' onclick='passa_a(2);'><br/>");
-					echo("<input type='button' value='Logout' onclick='logout();'><br/>");
-					break;
-			case 1:
-					echo("ELENCO UTENTI<br/>");
-					if (($handle = fopen("utenti.csv", "r"))) 
-						{
-						while ($riga = fgetcsv($handle, 1000, ";")) 
-							{
-								for($k=0;$k<count($riga);$k++)
-								   echo($riga[$k]." - ");
-								echo("<br/><hr>");
-							}
-						fclose($handle);
-						}		
-					else
-						echo "non riesco ad aprire il file, mannaggia!";				
-					echo("<input type='button' value='Torna al MENU' onclick='passa_a(0);'><br/>");
-					
-					break;
-			case 2:
-					echo("GESTIONE UTENTI<br/>");
-					echo("<input type='button' value='Inserisci Utente' onclick='passa_a(3);'><br/>");
-					echo("<input type='button' value='Elimina Utente' onclick='passa_a(5);'><br/>");
-					echo("<input type='button' value='Modifica Utente' onclick='passa_a(7);'><br/>");
-					echo("<input type='button' value='Torna al MENU' onclick='passa_a(0);'><br/>");
-					
-					break;
-			case 3:
-					
-					echo("Username: <input type='text' value='' id='user'><br/>");
-					echo("Password: <input type='password' value='' id='pass'><br/>");
-					echo("<input type='checkbox' id='adm'> Amministratore<br/>");
-					echo("<input type='hidden' name='testo' id='testo'>");
-					echo("<input type='button' value='Inserisci Utente' onclick='concatena();'><br/>");
-					
-					break;
-			case 4:
-					$se=0;
-					$testo=$_POST["testo"];
-					$username=explode(";",$testo);
-					
-					if (($handle = fopen("utenti.csv", "r"))) 
-					{
-						while ($riga = fgetcsv($handle, 1000, ";")) 
-							{
-								if($riga[0]==$username[0])
-									$se=1;
-							}
-						fclose($handle);
-						}		
-					else
-						echo "non riesco ad aprire il file, mannaggia!";
-					if (($handle = fopen("utenti.csv", "a"))&&$se==0) 
-					{
-						fwrite($handle,$testo);
-						fclose($handle);
-					}		
-					else
-						echo "L'user è gia presente!";
-					
-					$dati=explode(";",$testo);
-					if($se==0)
-					{
-					echo "Inserito l'utente con queste caratteristiche:<br/>";
-					echo("Username: $dati[0]<br/>");
-					echo("Password: $dati[1]<br/>");
-					}
-					echo("<input type='button' value='Torna al MENU' onclick='passa_a(0);'><br/>");
-					
-					break;
-			case 5:
-					echo("ELIMINA UTENTI<br/>");
-					$line=0;
-					if (($handle = fopen("utenti.csv", "r"))) 
-					{
-						while ($riga = fgetcsv($handle, 1000, ";")) 
-						{
-								
-								$line++;
-								echo "$line: ";
-								for($k=0;$k<count($riga);$k++)
-								   echo($riga[$k]." - ");
-								echo("<br/><hr>");
-						}
-						fclose($handle);
-					}		
-					else
-						echo "non riesco ad aprire il file, mannaggia!";				
-					echo("Inserisci il numero della riga che vuoi eliminare: <input type='number' name='quantity' min='1' max='$line' name='eli' id='eli'><br/>");
-					echo("<input type='hidden' name='app' id='app'>");
-					echo("<input type='hidden' value='$line' name='num' id='num'>");
-					echo("<input type='button' value='Elimina' onclick='passa_aa(6);'><br/>");
-					echo("<input type='button' value='Torna al MENU' onclick='passa_a(0);'><br/>");
-					
-					break;
-			case 6:
-					echo "HO ELIMINATO L'UTENTE!<br/>";
-					
-						$campo=$_POST["app"]-1;
-						$a=0;
-						$handle2 = fopen('appo.csv', "w");
-						if (($handle = fopen("utenti.csv", "r"))) 
-								{
-								while ($riga = fgets($handle)) 
-								{
-									if($a!=$campo)
-										fwrite($handle2,$riga);
-									$a=$a+1;
-								}
-								fclose($handle);
-								}		
-							else
-								echo "non riesco ad aprire il file, mannaggia!";
-						fclose($handle2);
-						unlink("utenti.csv");
-						rename("appo.csv","utenti.csv");
-				
-				
-				
-					
-					echo("<input type='button' value='Elimna un altro utente' onclick='passa_a(5);'><br/>");
-					echo("<input type='button' value='Torna al MENU' onclick='passa_a(0);'><br/>");
-					break;
-			case 7:
-					echo("MODIFICA UTENTI<br/>");
-					$line=0;
-					if (($handle = fopen("utenti.csv", "r"))) 
-					{
-						while ($riga = fgetcsv($handle, 1000, ";")) 
-						{
-								
-								$line++;
-								echo "$line: ";
-								for($k=0;$k<count($riga);$k++)
-								   echo($riga[$k]." - ");
-								echo("<br/><hr>");
-						}
-						fclose($handle);
-					}		
-					else
-						echo "non riesco ad aprire il file, mannaggia!";				
-					echo("Inserisci il numero della riga che vuoi modificare: <input type='number' name='quantity' min='1' max='$line' name='eli' id='eli'><br/>");
-					echo("Nuova password: <input type='text' value='' name='password' id='password'><br/>");
-					echo("<input type='hidden' name='app' id='app'>");
-					echo("<input type='hidden' value='$line' name='num' id='num'>");
-					echo("<input type='button' value='Modifica' onclick='passa_aa(8);'><br/>");
-					echo("<input type='button' value='Torna al MENU' onclick='passa_a(0);'><br/>");
-					break;
-			case 8:
-					
-					
-						$campo=$_POST["app"]-1;
-						$npass=$_POST["password"];
-						//echo "pass:$npass";
-						$a=0;
-						$handle2 = fopen('appo.csv', "w");
-						if (($handle = fopen("utenti.csv", "r"))) 
-						{
-							while ($riga = fgets($handle)) 
-							{
-								if($a!=$campo)
-									fwrite($handle2,$riga);
-								else
-								{
-									$riga[strlen($riga)]=';';
-									$nuova=explode(";",$riga);
-									$nuova[1]=$npass;
-									fwrite($handle2,$nuova[0].';'.$nuova[1].';'.$nuova[2]);
-								}
-								$a=$a+1;
-							}
-							fclose($handle);
-							}		
-						else
-							echo "non riesco ad aprire il file, mannaggia!";
-					fclose($handle2);
-					unlink("utenti.csv");
-					rename("appo.csv","utenti.csv");
-				
-				
-				
-					echo "HO MODIFICATO L'UTENTE $nuova[0]!<br/>";
-					echo("<input type='button' value='Modifica un altro utente' onclick='passa_a(7);'><br/>");
-					echo("<input type='button' value='Torna al MENU' onclick='passa_a(0);'><br/>");
-					break;
-		}
-		echo("</form>");
-		echo("</body>");
-?>
+	</body>
+</html>
 //credit to Gabriele Barcella
