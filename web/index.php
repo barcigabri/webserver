@@ -94,4 +94,6 @@
 		?>
 	</body>
 </html>
-//credit to Gabriele Barcella
+//
+
+Credit to Gabriele Barcella
