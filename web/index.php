@@ -45,7 +45,6 @@
 			# Questo script chiama un'API e la inserisce in una tabella
 			# Indirizzo dell'API da richiedere
 			$indirizzo_pagina="https://api.foursquare.com/v2/venues/search?v=20161016&query=$que&limit=$lim&intent=checkin&client_id=YVMN1NGHAW4DWINOY2BHBVQTGR0RG01D4EVZ3Z3TPRN5EBE2&client_secret=GYRAVQCTVV5DUYI3J3OH2GKLQN5S2LEA0QIGECJ1MUFBTX2X&near=$cit";
-			echo $indirizzo_pagina;
 			# Codice di utilizzo di cURL
 			# Chiama l'API e la immagazzina in $json
 			$ch = curl_init() or die(curl_error());
