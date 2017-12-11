@@ -58,7 +58,7 @@
 			
 			# Controllo valori
 			if (count($data->response->venues)<$lim);
-				$lim=$data->response->venues;
+				$lim=count($data->response->venues);
 			
 			# Stampa della tabella delle pizzerie.
 			if($lim!=0)
