@@ -42,7 +42,7 @@
 				$que="pizzeria";
 			}
 			
-			for(int $e=0; $e<strlen($cit); $e++)
+			for($e=0; $e<strlen($cit); $e++)
 				if($cit[$e]==' ')
 					$cit[$e]='+';
 			
