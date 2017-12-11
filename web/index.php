@@ -101,6 +101,9 @@
 			echo curl_error($ch);
 			curl_close($ch);
 
+			if($lim=0)
+				$lim=10;
+			
 			for($e=0; $e<strlen($cit); $e++)
 				if($cit[$e]=='+')
 					$cit[$e]=' ';
