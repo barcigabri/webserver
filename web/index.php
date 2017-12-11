@@ -28,6 +28,7 @@
 			if(isset($_POST["cit"]))
 			{
 				$cit=$_POST["cit"];
+				echo $cit;
 			}
 			else
 			{
