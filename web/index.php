@@ -42,7 +42,12 @@
 				$que="pizzeria";
 			}
 			
+			# Gestione spazi
+			
 			for($e=0; $e<strlen($cit); $e++)
+				if($cit[$e]==' ')
+					$cit[$e]='+';
+			for($e=0; $e<strlen($que); $e++)
 				if($cit[$e]==' ')
 					$cit[$e]='+';
 			
@@ -94,6 +99,13 @@
 			echo curl_error($ch);
 			curl_close($ch);
 
+			for($e=0; $e<strlen($cit); $e++)
+				if($cit[$e]=='+')
+					$cit[$e]=' ';
+			for($e=0; $e<strlen($que); $e++)
+				if($cit[$e]=='+')
+					$cit[$e]=' ';
+		
 			echo "<form id='forma' method='post' onsubmit='return controllo_campi();'><br/>";
 			echo "<table>";
 			echo "<tr>";
