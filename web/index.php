@@ -11,6 +11,8 @@
 				if(document.getElementById("lim").value!=""&&document.getElementById("cit").value!=""&&document.getElementById("que").value!="")
 					if(valore.match(verifica)&&parseInt(valore)<51)
 						esito=true;
+				if(!esito)
+					alert("E' presente almeno un campo vuoto o compilato in modo errato!")
 				return esito;
 			}
 		</script>
